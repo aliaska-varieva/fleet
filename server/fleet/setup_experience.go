@@ -46,6 +46,10 @@ type SetupExperienceStatusResult struct {
 	SoftwareInstallerID             *uint                             `db:"software_installer_id" json:"-" `
 	HostSoftwareInstallsExecutionID *string                           `db:"host_software_installs_execution_id" json:"-" `
 	VPPAppTeamID                    *uint                             `db:"vpp_app_team_id" json:"-" `
+	// VPPAppVersionName is the admin-provided label of the targeted App Store
+	// app version (e.g. "Production"). Populated by ListSetupExperienceResultsByHostUUID
+	// via a JOIN on vpp_apps_teams. Nil for installer / in-house / script items.
+	VPPAppVersionName               *string                           `db:"vpp_app_version_name" json:"-"`
 	VPPAppAdamID                    *string                           `db:"vpp_app_adam_id" json:"-"`
 	VPPAppPlatform                  *string                           `db:"vpp_app_platform" json:"-"`
 	NanoCommandUUID                 *string                           `db:"nano_command_uuid" json:"-" `
